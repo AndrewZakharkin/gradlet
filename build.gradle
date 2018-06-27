@@ -1,15 +1,27 @@
+plugins {
+    id 'org.akhikhl.gretty' version '1.2.4'
+    id 'war'
+}
+
 group 'com.zakharkin'
 version '1.0-SNAPSHOT'
 
-apply plugin: 'java'
+gretty{
+    servletContainer = 'jetty9'
+    port = 8090
+}
 
-sourceCompatibility = 1.8
+sourceCompatibility = 1.10
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
+    runtime('org.springframework:spring-core:5.0.6.RELEASE')
+    runtime('org.springframework:spring-context:5.0.6.RELEASE')
+    runtime('org.springframework:spring-beans:5.0.6.RELEASE')
+    runtime('org.springframework:spring-web:5.0.6.RELEASE')
     testCompile('org.junit.jupiter:junit-jupiter-api:5.2.0')
     testRuntime('org.junit.jupiter:junit-jupiter-engine:5.2.0')
 }
